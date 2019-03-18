@@ -11,7 +11,7 @@ vector<int> pile[maxN];//vector数组,用于表示数组元素是vector
 void find_block(int a, int& p, int& h){//找到木块所属的pile和height
     for(p = 0; p < n; p++){
         for(h = 0; h < pile[p].size(); h++){
-            if(pile[p][h] == a) return;
+            if(pile[p][h] == a) return;//二分查找不适用
         }
     }
 }
@@ -29,7 +29,7 @@ void clear_above(int p, int h){
 void pile_over(int p, int h, int p2){
     for(int i=h; i<pile[p].size();i++)
         pile[p2].push_back(pile[p][i]);
-    pile[p].resize(h);
+    pile[p].resize(h);//利用resize调整数组大小
 }
 
 void print(){//输出所有位置的所有木块
@@ -45,7 +45,7 @@ int main(){
     cin >> n;
     string s1, s2;
     for(int i=0;i<n;i++) pile[i].push_back(i);
-    while(cin>>s1>>a>>s2>>b){
+    while(cin>>s1>>a>>s2>>b){//输入的格式
         int pa, pb, ha, hb;
         find_block(a, pa, ha);
         find_block(b, pb, hb);
